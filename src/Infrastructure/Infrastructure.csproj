@@ -5,7 +5,7 @@
         <RootNamespace>Weblog.Infrastructure</RootNamespace>
         <AssemblyName>Weblog.Infrastructure</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

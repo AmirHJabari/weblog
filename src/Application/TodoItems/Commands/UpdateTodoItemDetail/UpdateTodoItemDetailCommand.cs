@@ -14,7 +14,7 @@ public class UpdateTodoItemDetailCommand : IRequest
 
     public PriorityLevel Priority { get; set; }
 
-    public string? Note { get; set; }
+    public string Note { get; set; }
 }
 
 public class UpdateTodoItemDetailCommandHandler : IRequestHandler<UpdateTodoItemDetailCommand>

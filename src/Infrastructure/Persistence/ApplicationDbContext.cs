@@ -39,12 +39,10 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
             switch (entry.State)
             {
                 case EntityState.Added:
-                    entry.Entity.CreatedBy = _currentUserService.UserId;
                     entry.Entity.Created = _dateTime.Now;
                     break;
 
                 case EntityState.Modified:
-                    entry.Entity.LastModifiedBy = _currentUserService.UserId;
                     entry.Entity.LastModified = _dateTime.Now;
                     break;
             }

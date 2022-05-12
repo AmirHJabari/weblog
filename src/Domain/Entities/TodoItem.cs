@@ -6,9 +6,9 @@ public class TodoItem : AuditableEntity, IHasDomainEvent
 
     public int ListId { get; set; }
 
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
-    public string? Note { get; set; }
+    public string Note { get; set; }
 
     public PriorityLevel Priority { get; set; }
 

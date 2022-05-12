@@ -6,7 +6,7 @@ namespace Weblog.Application.TodoLists.Commands.CreateTodoList;
 
 public class CreateTodoListCommand : IRequest<int>
 {
-    public string? Title { get; set; }
+    public string Title { get; set; }
 }
 
 public class CreateTodoListCommandHandler : IRequestHandler<CreateTodoListCommand, int>

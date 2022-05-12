@@ -5,7 +5,7 @@
         <RootNamespace>Weblog.Domain</RootNamespace>
         <AssemblyName>Weblog.Domain</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
 </Project>
