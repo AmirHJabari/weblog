@@ -3,34 +3,36 @@ using Weblog.Application.Common.Interfaces;
 using Weblog.Domain.Common;
 using Weblog.Domain.Entities;
 using Weblog.Infrastructure.Identity;
-using Duende.IdentityServer.EntityFramework.Options;
-using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace Weblog.Infrastructure.Persistence;
 
-public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
-    private readonly ICurrentUserService _currentUserService;
     private readonly IDateTime _dateTime;
     private readonly IDomainEventService _domainEventService;
 
     public ApplicationDbContext(
         DbContextOptions<ApplicationDbContext> options,
-        IOptions<OperationalStoreOptions> operationalStoreOptions,
-        ICurrentUserService currentUserService,
         IDomainEventService domainEventService,
-        IDateTime dateTime) : base(options, operationalStoreOptions)
+        IDateTime dateTime) : base(options)
     {
-        _currentUserService = currentUserService;
         _domainEventService = domainEventService;
         _dateTime = dateTime;
     }
 
-    public DbSet<TodoList> TodoLists => Set<TodoList>();
+    public DbSet<TodoList> TodoLists { get; set; }
 
-    public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+    public DbSet<TodoItem> TodoItems { get; set; }
+
+    public DbSet<Blog> Blogs { get; set; }
+
+    public DbSet<BlogToTagRelation> BlogToTagRelations { get; set; }
+
+    public DbSet<Tag> Tags { get; set; }
+
+    public DbSet<Category> Categories { get; set; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
