@@ -41,7 +41,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
             switch (entry.State)
             {
                 case EntityState.Added:
-                    entry.Entity.Created = _dateTime.Now;
+                    entry.Entity.CreatedAt = _dateTime.Now;
                     break;
 
                 case EntityState.Modified:

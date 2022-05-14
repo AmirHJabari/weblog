@@ -1,10 +1,12 @@
 namespace Weblog.Domain.Entities;
 
-public class BaseManyToMany<TFromEntity, TToEntity>
+public class BaseManyToMany<TFromEntity, TToEntity> 
+    where TFromEntity : class
+    where TToEntity : class
 {
-    public int FromEntityId { get; set; }
-    public int ToEntityId { get; set; }
+    public int FromId { get; set; }
+    public int ToId { get; set; }
 
-    public virtual TFromEntity FromEntity { get; set; }
-    public virtual TToEntity ToEntity { get; set; }
+    public virtual TFromEntity From { get; set; }
+    public virtual TToEntity To { get; set; }
 }

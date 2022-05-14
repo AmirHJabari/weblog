@@ -1,19 +1,15 @@
 namespace Weblog.Domain.Entities;
 
-public class Tag
+public class Tag : AuditableEntity, IHasDomainEvent
 {
     public Tag()
     {
-        Children = new List<Tag>();
-        BlogsRelation = new List<BlogToTagRelation>();
+        BlogRelations = new List<BlogToTagRelation>();
     }
 
     public int Id { get; set; }
-    public int? ParentId { get; set; }
     public string Name { get; set; }
 
-    public virtual Tag Parent { get; set; }
-    public virtual IList<Tag> Children { get; set; }
-
-    public virtual IList<BlogToTagRelation> BlogsRelation { get; set; }
+    public virtual IList<BlogToTagRelation> BlogRelations { get; set; }
+    public List<DomainEvent> DomainEvents { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }

@@ -1,10 +1,10 @@
 namespace Weblog.Domain.Entities;
 
-public class Blog : AuditableEntity
+public class Blog : AuditableEntity, IHasDomainEvent
 {
     public Blog()
     {
-        TagsRelation = new List<BlogToTagRelation>();
+        TagRelations = new List<BlogToTagRelation>();
     }
     
     public int Id { get; set; }
@@ -39,6 +39,8 @@ public class Blog : AuditableEntity
 
     public BlogStatus Status { get; set; }
 
-    public virtual IList<BlogToTagRelation> TagsRelation { get; set; }
+    public virtual IList<BlogToTagRelation> TagRelations { get; set; }
     public virtual Category Category { get; set; }
+
+    public List<DomainEvent> DomainEvents { get; set; }
 }
