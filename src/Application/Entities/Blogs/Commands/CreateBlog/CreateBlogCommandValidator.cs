@@ -1,6 +1,7 @@
 using FluentValidation;
 
-namespace Weblog.Application.Blogs.Commands.CreateBlog;
+namespace Weblog.Application.Entities.Commands;
+// namespace Weblog.Application.Blogs.Commands.CreateBlog;
 
 public class CreateTodoItemCommandValidator : AbstractValidator<CreateBlogCommand>
 {
