@@ -3,7 +3,7 @@ using Weblog.Application.Common.Interfaces;
 using Weblog.Domain.Entities;
 using MediatR;
 
-namespace Weblog.Application.TodoItems.Commands.UpdateTodoItem;
+namespace Weblog.Application.Commands.UpdateTodoItem;
 
 public class UpdateTodoItemCommand : IRequest
 {

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using AutoMapper;
 using Weblog.Application.Common.Mappings;
-using Weblog.Application.TodoLists.Queries.GetTodos;
+using Weblog.Application.Queries.GetTodos;
 using Weblog.Domain.Entities;
 using NUnit.Framework;
 

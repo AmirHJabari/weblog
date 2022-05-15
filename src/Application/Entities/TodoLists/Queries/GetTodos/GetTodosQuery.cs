@@ -4,8 +4,9 @@ using Weblog.Application.Common.Interfaces;
 using Weblog.Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Weblog.Application.Common.Mappings;
 
-namespace Weblog.Application.TodoLists.Queries.GetTodos;
+namespace Weblog.Application.Queries.GetTodos;
 
 public class GetTodosQuery : IRequest<TodosVm>
 {
@@ -33,9 +34,8 @@ public class GetTodosQueryHandler : IRequestHandler<GetTodosQuery, TodosVm>
 
             Lists = await _context.TodoLists
                 .AsNoTracking()
-                .ProjectTo<TodoListDto>(_mapper.ConfigurationProvider)
                 .OrderBy(t => t.Title)
-                .ToListAsync(cancellationToken)
+                .ProjectToListAsync<TodoListDto>(_mapper.ConfigurationProvider, cancellationToken)
         };
     }
 }

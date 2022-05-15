@@ -1,9 +1,9 @@
 ﻿using Weblog.Application.Common.Models;
-using Weblog.Application.TodoItems.Commands.CreateTodoItem;
-using Weblog.Application.TodoItems.Commands.DeleteTodoItem;
-using Weblog.Application.TodoItems.Commands.UpdateTodoItem;
-using Weblog.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using Weblog.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+using Weblog.Application.Commands.CreateTodoItem;
+using Weblog.Application.Commands.DeleteTodoItem;
+using Weblog.Application.Commands.UpdateTodoItem;
+using Weblog.Application.Commands.UpdateTodoItemDetail;
+using Weblog.Application.Queries.GetTodoItemsWithPagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

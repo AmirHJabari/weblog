@@ -2,7 +2,7 @@
 using Weblog.Application.Common.Security;
 using MediatR;
 
-namespace Weblog.Application.TodoLists.Commands.PurgeTodoLists;
+namespace Weblog.Application.Commands.PurgeTodoLists;
 
 [Authorize(Roles = "Administrator")]
 [Authorize(Policy = "CanPurge")]

@@ -1,6 +1,6 @@
 ﻿using Weblog.Application.Common.Exceptions;
-using Weblog.Application.TodoLists.Commands.CreateTodoList;
-using Weblog.Application.TodoLists.Commands.UpdateTodoList;
+using Weblog.Application.Commands.CreateTodoList;
+using Weblog.Application.Commands.UpdateTodoList;
 using Weblog.Domain.Entities;
 using FluentAssertions;
 using NUnit.Framework;

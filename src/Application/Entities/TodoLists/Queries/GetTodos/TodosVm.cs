@@ -1,4 +1,4 @@
-﻿namespace Weblog.Application.TodoLists.Queries.GetTodos;
+﻿namespace Weblog.Application.Queries.GetTodos;
 
 public class TodosVm
 {

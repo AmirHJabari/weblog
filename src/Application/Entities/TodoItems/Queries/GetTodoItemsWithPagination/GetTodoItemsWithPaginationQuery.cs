@@ -5,7 +5,7 @@ using Weblog.Application.Common.Mappings;
 using Weblog.Application.Common.Models;
 using MediatR;
 
-namespace Weblog.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+namespace Weblog.Application.Queries.GetTodoItemsWithPagination;
 
 public class GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
 {

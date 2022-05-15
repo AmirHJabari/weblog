@@ -2,7 +2,7 @@
 using Weblog.Domain.Entities;
 using MediatR;
 
-namespace Weblog.Application.TodoLists.Commands.CreateTodoList;
+namespace Weblog.Application.Commands.CreateTodoList;
 
 public class CreateTodoListCommand : IRequest<int>
 {

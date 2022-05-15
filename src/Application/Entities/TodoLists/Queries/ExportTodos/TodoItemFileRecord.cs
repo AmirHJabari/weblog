@@ -1,7 +1,7 @@
 ﻿using Weblog.Application.Common.Mappings;
 using Weblog.Domain.Entities;
 
-namespace Weblog.Application.TodoLists.Queries.ExportTodos;
+namespace Weblog.Application.Queries.ExportTodos;
 
 public class TodoItemRecord : IMapFrom<TodoItem>
 {

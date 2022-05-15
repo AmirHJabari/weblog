@@ -1,4 +1,4 @@
-﻿using Weblog.Application.TodoLists.Queries.ExportTodos;
+﻿using Weblog.Application.Queries.ExportTodos;
 
 namespace Weblog.Application.Common.Interfaces;
 

@@ -1,8 +1,8 @@
 ﻿using Weblog.Application.Common.Exceptions;
-using Weblog.Application.TodoItems.Commands.CreateTodoItem;
-using Weblog.Application.TodoItems.Commands.UpdateTodoItem;
-using Weblog.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using Weblog.Application.TodoLists.Commands.CreateTodoList;
+using Weblog.Application.Commands.CreateTodoItem;
+using Weblog.Application.Commands.UpdateTodoItem;
+using Weblog.Application.Commands.UpdateTodoItemDetail;
+using Weblog.Application.Commands.CreateTodoList;
 using Weblog.Domain.Entities;
 using Weblog.Domain.Enums;
 using FluentAssertions;

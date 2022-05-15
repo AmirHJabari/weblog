@@ -1,4 +1,4 @@
-﻿namespace Weblog.Application.TodoLists.Queries.ExportTodos;
+﻿namespace Weblog.Application.Queries.ExportTodos;
 
 public class ExportTodosVm
 {

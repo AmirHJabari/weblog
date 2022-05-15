@@ -1,8 +1,8 @@
-﻿using Weblog.Application.TodoLists.Commands.CreateTodoList;
-using Weblog.Application.TodoLists.Commands.DeleteTodoList;
-using Weblog.Application.TodoLists.Commands.UpdateTodoList;
-using Weblog.Application.TodoLists.Queries.ExportTodos;
-using Weblog.Application.TodoLists.Queries.GetTodos;
+﻿using Weblog.Application.Commands.CreateTodoList;
+using Weblog.Application.Commands.DeleteTodoList;
+using Weblog.Application.Commands.UpdateTodoList;
+using Weblog.Application.Queries.ExportTodos;
+using Weblog.Application.Queries.GetTodos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

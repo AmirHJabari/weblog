@@ -4,7 +4,7 @@ using Weblog.Domain.Entities;
 using Weblog.Domain.Events;
 using MediatR;
 
-namespace Weblog.Application.TodoItems.Commands.DeleteTodoItem;
+namespace Weblog.Application.Commands.DeleteTodoItem;
 
 public class DeleteTodoItemCommand : IRequest
 {

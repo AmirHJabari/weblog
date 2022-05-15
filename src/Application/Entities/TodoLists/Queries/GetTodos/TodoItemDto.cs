@@ -2,7 +2,7 @@
 using Weblog.Application.Common.Mappings;
 using Weblog.Domain.Entities;
 
-namespace Weblog.Application.TodoLists.Queries.GetTodos;
+namespace Weblog.Application.Queries.GetTodos;
 
 public class TodoItemDto : IMapFrom<TodoItem>
 {

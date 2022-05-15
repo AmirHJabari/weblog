@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Weblog.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+namespace Weblog.Application.Queries.GetTodoItemsWithPagination;
 
 public class GetTodoItemsWithPaginationQueryValidator : AbstractValidator<GetTodoItemsWithPaginationQuery>
 {

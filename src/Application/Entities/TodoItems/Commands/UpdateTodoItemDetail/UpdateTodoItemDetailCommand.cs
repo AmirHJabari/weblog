@@ -4,7 +4,7 @@ using Weblog.Domain.Entities;
 using Weblog.Domain.Enums;
 using MediatR;
 
-namespace Weblog.Application.TodoItems.Commands.UpdateTodoItemDetail;
+namespace Weblog.Application.Commands.UpdateTodoItemDetail;
 
 public class UpdateTodoItemDetailCommand : IRequest
 {

@@ -4,7 +4,7 @@ using Weblog.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Weblog.Application.TodoLists.Queries.ExportTodos;
+namespace Weblog.Application.Queries.ExportTodos;
 
 public class ExportTodosQuery : IRequest<ExportTodosVm>
 {

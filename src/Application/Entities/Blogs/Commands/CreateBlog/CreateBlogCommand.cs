@@ -4,7 +4,7 @@ using Weblog.Domain.Events;
 using MediatR;
 using Weblog.Domain.Enums;
 
-namespace Weblog.Application.Entities.Commands;
+namespace Weblog.Application.Commands.CreateBlog;
 
 public class CreateBlogCommand : IRequest<int>
 {

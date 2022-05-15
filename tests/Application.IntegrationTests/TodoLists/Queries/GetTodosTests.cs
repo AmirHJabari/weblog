@@ -1,4 +1,4 @@
-﻿using Weblog.Application.TodoLists.Queries.GetTodos;
+﻿using Weblog.Application.Queries.GetTodos;
 using Weblog.Domain.Entities;
 using Weblog.Domain.ValueObjects;
 using FluentAssertions;

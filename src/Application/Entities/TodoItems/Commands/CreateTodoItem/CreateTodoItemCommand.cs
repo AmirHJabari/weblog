@@ -3,7 +3,7 @@ using Weblog.Domain.Entities;
 using Weblog.Domain.Events;
 using MediatR;
 
-namespace Weblog.Application.TodoItems.Commands.CreateTodoItem;
+namespace Weblog.Application.Commands.CreateTodoItem;
 
 public class CreateTodoItemCommand : IRequest<int>
 {

@@ -4,7 +4,7 @@ using Weblog.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Weblog.Application.TodoLists.Commands.DeleteTodoList;
+namespace Weblog.Application.Commands.DeleteTodoList;
 
 public class DeleteTodoListCommand : IRequest
 {

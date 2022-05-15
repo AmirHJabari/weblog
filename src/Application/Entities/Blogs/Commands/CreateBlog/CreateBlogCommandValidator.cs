@@ -1,11 +1,10 @@
 using FluentValidation;
 
-namespace Weblog.Application.Entities.Commands;
-// namespace Weblog.Application.Blogs.Commands.CreateBlog;
+namespace Weblog.Application.Commands.CreateBlog;
 
-public class CreateTodoItemCommandValidator : AbstractValidator<CreateBlogCommand>
+public class CreateBlogCommandValidator : AbstractValidator<CreateBlogCommand>
 {
-    public CreateTodoItemCommandValidator()
+    public CreateBlogCommandValidator()
     {
         RuleFor(b => b.Title)
             .Length(12, 100)

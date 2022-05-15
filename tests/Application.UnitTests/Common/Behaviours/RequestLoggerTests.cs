@@ -1,6 +1,6 @@
 ﻿using Weblog.Application.Common.Behaviours;
 using Weblog.Application.Common.Interfaces;
-using Weblog.Application.TodoItems.Commands.CreateTodoItem;
+using Weblog.Application.Commands.CreateTodoItem;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
