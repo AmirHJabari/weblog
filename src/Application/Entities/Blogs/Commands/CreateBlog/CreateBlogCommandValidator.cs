@@ -27,7 +27,7 @@ public class CreateBlogCommandValidator : AbstractValidator<CreateBlogCommand>
             .NotEmpty();
 
         RuleFor(b => b.CategoryId)
-            .NotEmpty();
+            .GreaterThanOrEqualTo(1);
 
         RuleFor(b => b.TagsIds)
             .NotEmpty()

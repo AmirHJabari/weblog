@@ -8,15 +8,17 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
 {
     public void Configure(EntityTypeBuilder<Tag> builder)
     {
-        builder.Ignore(e => e.DomainEvents);
-
-        // Title
+        builder.Ignore(t => t.DomainEvents);
+        
+        // Name
         builder.Property(t => t.Name)
             .HasMaxLength(20)
             .IsRequired();
+        builder.HasIndex(t => t.Name)
+            .IsUnique();
 
         // Blog Relations
-        builder.HasMany(b => b.BlogRelations)
+        builder.HasMany(t => t.BlogRelations)
             .WithOne(r => r.To)
             .HasForeignKey(r => r.ToId);
     }

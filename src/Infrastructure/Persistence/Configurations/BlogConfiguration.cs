@@ -11,17 +11,19 @@ public class BlogConfiguration : IEntityTypeConfiguration<Blog>
         builder.Ignore(e => e.DomainEvents);
 
         // Title
-        builder.Property(t => t.Title)
+        builder.Property(b => b.Title)
             .HasMaxLength(100)
             .IsRequired();
         
         // Url Title
-        builder.Property(t => t.UrlTitle)
+        builder.Property(b => b.UrlTitle)
             .HasMaxLength(150)
             .IsRequired();
+        builder.HasIndex(b => b.UrlTitle)
+            .IsUnique();
 
         // Content
-        builder.Property(t => t.Content)
+        builder.Property(b => b.Content)
             .HasMaxLength(10000)
             .IsRequired();
 
