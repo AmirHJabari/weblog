@@ -36,6 +36,18 @@
                 "${workspaceFolder}/src/WebUI/WebUI.csproj"
             ],
             "problemMatcher": "$msCompile"
-        }
+        },
+        {
+            "label": "buildApi",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/WebApi/WebApi.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
     ]
 }

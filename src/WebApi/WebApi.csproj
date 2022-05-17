@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>Weblog.WebApi</AssemblyName>
+        <RootNamespace>Weblog.WebApi</RootNamespace>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DocumentationFile>Weblog.WebApi.xml</DocumentationFile>
+        <NoWarn>1701;1702;1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Application\Application.csproj" />
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Weblog.WebApi.xml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+</Project>

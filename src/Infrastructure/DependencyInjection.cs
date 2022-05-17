@@ -33,7 +33,7 @@ public static class DependencyInjection
         services.AddScoped<IDomainEventService, DomainEventService>();
 
         services.AddTransient<IDateTime, DateTimeService>();
-        services.AddTransient<IIdentityService, IdentityService>();
+        //services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
         services.AddAuthentication();
