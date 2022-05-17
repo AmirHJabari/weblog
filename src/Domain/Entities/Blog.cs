@@ -1,13 +1,12 @@
 namespace Weblog.Domain.Entities;
 
-public class Blog : AuditableEntity, IHasDomainEvent
+public class Blog : BaseEntity, IHasDomainEvent
 {
     public Blog()
     {
         TagRelations = new List<BlogToTagRelation>();
     }
-    
-    public int Id { get; set; }
+
     public int CategoryId { get; set; }
 
     /// <summary>

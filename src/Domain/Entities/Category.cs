@@ -1,13 +1,11 @@
 namespace Weblog.Domain.Entities;
 
-public class Category : AuditableEntity, IHasDomainEvent
+public class Category : BaseEntity, IHasDomainEvent
 {
     public Category()
     {
         Blogs = new List<Blog>();
     }
-
-    public int Id { get; set; }
 
     /// <summary>
     /// The display name of the category.

@@ -1,4 +1,4 @@
-﻿namespace Weblog.Domain.Common;
+namespace Weblog.Domain.Common;
 
 public abstract class AuditableEntity
 {
