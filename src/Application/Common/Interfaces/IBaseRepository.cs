@@ -12,5 +12,7 @@ public interface IBaseRepository<TEntity, TKey>
 
     Task UpdateAsync(TEntity obj, CancellationToken cancellationToken = default);
 
+    Task UpdateManyAsync(IEnumerable<TEntity> objs, CancellationToken cancellationToken = default);
+
     Task RemoveAsync(TKey id, CancellationToken cancellationToken = default);
 }
