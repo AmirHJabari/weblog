@@ -21,7 +21,7 @@ public class CreateBlogsSerieCommand : IRequest<string>
     public IList<int> BlogsId { get; set; }
 }
 
-public class CreateBlogsSerieCommandHandler : IRequestHandler<CreateBlogsSerieCommand, string>
+internal class CreateBlogsSerieCommandHandler : IRequestHandler<CreateBlogsSerieCommand, string>
 {
     private readonly IBlogsSerieRepository _blogsSerieRepository;
     private readonly IApplicationDbContext _context;

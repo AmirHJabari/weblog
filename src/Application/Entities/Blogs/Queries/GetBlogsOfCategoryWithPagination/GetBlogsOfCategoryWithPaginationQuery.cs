@@ -17,7 +17,7 @@ public class GetBlogsOfCategoryWithPaginationQuery : IRequest<PaginatedList<Blog
     public int PageSize { get; set; } = 10;
 }
 
-public class GetBlogsOfCategoryWithPaginationQueryHandler : IRequestHandler<GetBlogsOfCategoryWithPaginationQuery, PaginatedList<BlogBriefDto>>
+internal class GetBlogsOfCategoryWithPaginationQueryHandler : IRequestHandler<GetBlogsOfCategoryWithPaginationQuery, PaginatedList<BlogBriefDto>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;

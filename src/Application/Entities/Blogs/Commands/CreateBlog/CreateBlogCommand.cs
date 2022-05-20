@@ -25,7 +25,7 @@ public class CreateBlogCommand : IRequest<int>
     public List<int> TagsIds { get; set; }
 }
 
-public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, int>
+internal class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, int>
 {
     private readonly IApplicationDbContext _context;
 

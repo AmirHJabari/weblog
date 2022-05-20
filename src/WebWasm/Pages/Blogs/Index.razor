@@ -1,0 +1,23 @@
+@page "/Blogs"
+@using Application.Queries.GetBlogsOfCategoryWithPagination
+@using Application.Common.Models
+@inject IBlogHttpClient _client;
+
+<PageTitle>Blogs</PageTitle>
+
+<h1>Blogs</h1>
+
+@if(Blogs.Items.Any())
+{
+
+}
+else
+{
+    <NoContent Title="There is no blog to display!" />
+}
+
+@code
+{
+    private PaginatedList<BlogBriefDto> Blogs { get; set; }
+    
+}

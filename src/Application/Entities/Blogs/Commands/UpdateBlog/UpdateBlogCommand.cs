@@ -28,7 +28,7 @@ public class UpdateBlogCommand : IRequest
     public List<int> TagsIds { get; set; }
 }
 
-public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand>
+internal class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand>
 {
     private readonly IApplicationDbContext _context;
 
