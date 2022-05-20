@@ -5,6 +5,12 @@
 /// </summary>
 public class BlogsSerie : BaseEntity<string>
 {
+    public BlogsSerie()
+        : base()
+    {
+        Blogs = new List<BlogsSerieItem>();
+    }
+
     public string Title { get; set; }
 
     /// <summary>
