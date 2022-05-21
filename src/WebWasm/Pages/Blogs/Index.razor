@@ -1,15 +1,38 @@
 @page "/Blogs"
-@using Application.Queries.GetBlogsOfCategoryWithPagination
+@using Application.Queries.GetBlogsWithPagination
 @using Application.Common.Models
-@inject IBlogHttpClient _client;
+@inject IBlogHttpClient _client
 
 <PageTitle>Blogs</PageTitle>
 
 <h1>Blogs</h1>
 
-@if(Blogs.Items.Any())
+@if (Blogs is null)
 {
-
+    <div style="display:flex; gap:10px; justify-content:center; align-items:center; flex-direction: column">
+        <div class="spinner-border" role="status"></div>
+        <div>Loading...</div>
+    </div>
+}
+else if(Blogs.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Poster</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Blogs.Items)
+            {
+                <tr>
+                    <td>@item.PosterImage</td>
+                    <td>@item.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 else
 {
@@ -19,5 +42,10 @@ else
 @code
 {
     private PaginatedList<BlogBriefDto> Blogs { get; set; }
-    
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        Blogs = await _client.GetWithPaginationAsync(new() {ExcludeNonPublic = false, PageNumber = 1, PageSize = 10});
+    }
 }

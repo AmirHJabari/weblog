@@ -14,6 +14,7 @@ namespace Weblog.WebApi;
 
 public class Startup
 {
+    public const string PublicPolicy = "public_policy";
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
@@ -47,6 +48,21 @@ public class Startup
 
         services.AddSwagger();
 
+        
+        #region CORS
+        services.AddCors();
+        services.AddCors((options) =>
+        {
+            options.AddPolicy(PublicPolicy, (builder) =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
+        #endregion
+
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
     }
@@ -66,6 +82,8 @@ public class Startup
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
+
+        app.UseCors(PublicPolicy);
 
         app.UseRouting();
         app.UseHttpsRedirection();
