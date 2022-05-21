@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using Weblog.WebApi.Extensions;
+using Weblog.WebApi.Services;
 
 namespace Weblog.WebApi;
 
@@ -33,6 +34,7 @@ public class Startup
         });
 
         services.AddDatabaseDeveloperPageExceptionFilter();
+        services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
         services.AddHttpContextAccessor();
         services.AddHealthChecks()

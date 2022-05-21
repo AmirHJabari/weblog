@@ -9,6 +9,11 @@ public class PaginatedList<T>
     public int TotalPages { get; }
     public int TotalCount { get; }
 
+    public PaginatedList()
+    {
+        Items = new();
+    }
+
     public PaginatedList(List<T> items, int count, int pageNumber, int pageSize)
     {
         PageNumber = pageNumber;
