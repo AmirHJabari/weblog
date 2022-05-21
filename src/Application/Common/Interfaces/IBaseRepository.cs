@@ -8,7 +8,7 @@ public interface IBaseRepository<TEntity, TKey>
 {
     Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken = default);
 
-    Task<TKey> InsertAsync(TEntity obj, CancellationToken cancellationToken = default);
+    Task InsertAsync(TEntity obj, CancellationToken cancellationToken = default);
 
     Task UpdateAsync(TEntity obj, CancellationToken cancellationToken = default);
 
