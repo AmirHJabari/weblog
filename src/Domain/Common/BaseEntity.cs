@@ -10,4 +10,7 @@ public abstract class BaseEntity<TKey> : AuditableEntity
 }
 
 public abstract class BaseEntity : BaseEntity<int>
-{  }
+{
+    public BaseEntity() : base()
+    {  }
+}

@@ -1,13 +1,15 @@
-namespace Weblog.Domain.Entities;
+using Weblog.Application.Common.Mappings;
+using Weblog.Domain.Entities;
+using Weblog.Domain.Enums;
 
-public class Blog : BaseEntity, IHasDomainEvent
+namespace Weblog.Application.Queries.GetBlog;
+
+public class BlogDto : IMapFrom<Blog>
 {
-    public Blog() : base()
-    {
-        TagRelations = new List<BlogToTagRelation>();
-    }
+    public int Id { get; set; }
 
-    public int CategoryId { get; set; }
+    public string CategoryName { get; set; }
+    public string CategoryUrlName { get; set; }
 
     /// <summary>
     /// The title of the blog.
@@ -38,8 +40,11 @@ public class Blog : BaseEntity, IHasDomainEvent
 
     public BlogStatus Status { get; set; }
 
-    public virtual IList<BlogToTagRelation> TagRelations { get; set; }
-    public virtual Category Category { get; set; }
+    public TagDto[] Tags { get; set; }
+}
 
-    public List<DomainEvent> DomainEvents { get; set; }
+public class TagDto : IMapFrom<Tag>
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
 }

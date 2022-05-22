@@ -2,7 +2,7 @@ namespace Weblog.Domain.Entities;
 
 public class Category : BaseEntity, IHasDomainEvent
 {
-    public Category()
+    public Category() : base()
     {
         Blogs = new List<Blog>();
     }

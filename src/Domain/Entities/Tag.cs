@@ -2,7 +2,7 @@ namespace Weblog.Domain.Entities;
 
 public class Tag : BaseEntity, IHasDomainEvent
 {
-    public Tag()
+    public Tag() : base()
     {
         BlogRelations = new List<BlogToTagRelation>();
     }
