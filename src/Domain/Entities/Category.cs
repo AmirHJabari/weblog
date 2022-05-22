@@ -5,6 +5,7 @@ public class Category : BaseEntity, IHasDomainEvent
     public Category() : base()
     {
         Blogs = new List<Blog>();
+        DomainEvents = new();
     }
 
     /// <summary>

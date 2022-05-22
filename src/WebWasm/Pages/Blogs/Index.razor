@@ -5,11 +5,15 @@
 
 <PageTitle>Blogs</PageTitle>
 
-<h1>Blogs</h1>
+<h1 class="mb-4 h2">Blogs</h1>
+
+<div class="d-flex p-3 rounded-1 shadow" style="background-color: #F5F5F5;">
+    <a class="ms-auto btn btn-success font-monospace fw-bold" href="/blogs/insert"><span class="oi oi-plus pe-2"></span>Insert</a>
+</div>
 
 @if (Blogs is null)
 {
-    <div style="display:flex; gap:10px; justify-content:center; align-items:center; flex-direction: column">
+    <div class="mt-5 d-flex justify-content-center align-items-center flex-column" style="gap: 10px;">
         <div class="spinner-border" role="status"></div>
         <div>Loading...</div>
     </div>

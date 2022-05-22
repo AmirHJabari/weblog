@@ -1,0 +1,22 @@
+
+@for (int i = 0; i < Headers.Length; i++)
+{
+    var item = Headers[i];
+    _url += $"/{item}";
+    if (i < Headers.Length -1)
+    {
+        <a href="@_url">@item</a> <span class="mx-2 h4 oi oi-chevron-right"></span>
+    }
+    else
+    {
+        <a>@item</a>
+    }
+    
+}
+
+@code {
+    private string _url;
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public string[] Headers { get; set; }
+}
