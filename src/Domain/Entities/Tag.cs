@@ -5,6 +5,7 @@ public class Tag : BaseEntity, IHasDomainEvent
     public Tag() : base()
     {
         BlogRelations = new List<BlogToTagRelation>();
+        DomainEvents = new();
     }
 
     public string Name { get; set; }

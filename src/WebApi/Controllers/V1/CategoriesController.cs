@@ -18,7 +18,7 @@ public class CategoriesController : ApiControllerBase<CategoriesController>
     }
 
     [HttpPost]
-    public async Task<ActionResult<int>> Creat(CreateCategoryCommand request,
+    public async Task<ActionResult<int>> Create(CreateCategoryCommand request,
         CancellationToken cancellationToken)
     {
         return await Mediator.Send(request, cancellationToken);
