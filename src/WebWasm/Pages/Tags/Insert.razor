@@ -1,0 +1,42 @@
+@page "/Tags/insert"
+@inject ITagHttpClient _client
+@using Weblog.Application.Commands.CreateTag
+@inject NavigationManager NavigationManager
+
+<PageTitle>Tags > Insert</PageTitle>
+
+<h1 class="mb-4 h2"><RoutsWithOrder Headers=@(new string[] {"Tags", "Insert"})></RoutsWithOrder></h1>
+
+<EditForm Model="Form" OnValidSubmit="OnSubmit">
+    <FluentValidator></FluentValidator>
+
+    <div class="form-group mb-3 col-md-6">
+        <label for="name">Name</label>
+        <InputText id="name" type="text" class="form-control" @bind-Value="Form.Name"></InputText>
+        <ValidationMessage For="() => Form.Name"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+            <span class="oi oi-check"></span>
+            Submit
+        </button>
+    </div>
+</EditForm>
+
+@code
+{
+    private CreateTagCommand Form { get; set; } = new();
+
+    private async Task OnSubmit(EditContext context)
+    {
+        try
+        {
+            var id = await _client.CreateAsync(Form);
+            NavigationManager.NavigateTo("/tags");
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("This is the error: " + ex);
+        }
+    }
+}

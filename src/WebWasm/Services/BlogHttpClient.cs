@@ -25,14 +25,15 @@ public class BlogHttpClient : IBlogHttpClient, IDisposable
         return await res.Content.ReadFromJsonAsync<int>();
     }
 
-    public void Dispose()
-    {
-        _client.Dispose();
-    }
-
     public Task<PaginatedList<BlogBriefDto>> GetWithPaginationAsync(GetBlogsWithPaginationQuery request, CancellationToken cancellationToken = default)
     {
         return _client.GetFromJsonAsync<PaginatedList<BlogBriefDto>>(
-            $"api/v1/Blogs?ExcludeNonPublic={request.ExcludeNonPublic}&PageNumber={request.PageNumber}&PageSize={request.PageSize}");
+            $"api/v1/Blogs?ExcludeNonPublic={request.ExcludeNonPublic}&PageNumber={request.PageNumber}&PageSize={request.PageSize}",
+            cancellationToken: cancellationToken);
+    }
+
+    public void Dispose()
+    {
+        _client.Dispose();
     }
 }

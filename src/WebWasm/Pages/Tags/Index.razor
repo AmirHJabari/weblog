@@ -1,0 +1,55 @@
+@page "/Tags"
+@using Application.Queries.GetTagsWithPagination
+@using Application.Common.Models
+@inject ITagHttpClient _client
+
+<PageTitle>Tags</PageTitle>
+
+<h1 class="mb-4 h2">Tags</h1>
+
+<div class="d-flex mb-5 p-3 rounded-1 shadow" style="background-color: #F5F5F5;">
+    <a class="ms-auto btn btn-success font-monospace fw-bold" href="/Tags/insert"><span class="oi oi-plus pe-2"></span>Insert</a>
+</div>
+
+@if (Tags is null)
+{
+    <div class="mt-5 d-flex justify-content-center align-items-center flex-column" style="gap: 10px;">
+        <div class="spinner-border" role="status"></div>
+        <div>Loading...</div>
+    </div>
+}
+else if(Tags.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Blogs</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Tags.Items)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.BlogRelationsCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <NoContent Title="There is no tag to display!" />
+}
+
+@code
+{
+    private PaginatedList<TagDto> Tags { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        Tags = await _client.GetWithPaginationAsync(new() { PageNumber = 1, PageSize = 10 });
+    }
+}
