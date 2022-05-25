@@ -1,0 +1,53 @@
+@page "/Categories/insert"
+@inject ICategoryHttpClient _client
+@using Weblog.Application.Commands.CreateCategory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Categories > Insert</PageTitle>
+
+<h1 class="mb-4 h2"><RoutsWithOrder Headers=@(new string[] {"Categories", "Insert"})></RoutsWithOrder></h1>
+
+<EditForm Model="Form" OnValidSubmit="OnSubmit">
+    <FluentValidator></FluentValidator>
+
+    <div class="form-group mb-3 col-md-6">
+        <label for="name">Name</label>
+        <InputText id="name" type="text" class="form-control" @bind-Value="Form.Name"></InputText>
+        <ValidationMessage For="() => Form.Name"></ValidationMessage>
+    </div>
+    <div class="form-group mb-3 col-md-6">
+        <label for="urlName">UrlName</label>
+        <InputText id="urlName" type="text" class="form-control" @bind-Value="Form.UrlName"></InputText>
+        <ValidationMessage For="() => Form.UrlName"></ValidationMessage>
+    </div>
+    <div class="form-group mb-3 col-md-6">
+        <label for="description">Description</label>
+        <InputTextArea rows="5" id="description" type="text" class="form-control" @bind-Value="Form.Description"></InputTextArea>
+        <ValidationMessage For="() => Form.Description"></ValidationMessage>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+            <span class="oi oi-check"></span>
+            Submit
+        </button>
+    </div>
+</EditForm>
+
+@code
+{
+    private CreateCategoryCommand Form { get; set; } = new();
+
+    private async Task OnSubmit(EditContext context)
+    {
+        try
+        {
+            var id = await _client.CreateAsync(Form);
+            NavigationManager.NavigateTo("/Categories");
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("This is the error: " + ex);
+        }
+    }
+}
