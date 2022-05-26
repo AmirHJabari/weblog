@@ -5,14 +5,13 @@
 
 <PageTitle>Tags > Insert</PageTitle>
 
-<h1 class="mb-4 h2"><RoutsWithOrder Headers=@(new string[] {"Tags", "Insert"})></RoutsWithOrder></h1>
+<h1 class="mb-4 h2"><RoutsWithOrder Headers=@(new string[] {"Tags", "Insert"}) /></h1>
 
 <EditForm Model="Form" OnValidSubmit="OnSubmit">
     <FluentValidator></FluentValidator>
 
     <div class="form-group mb-3 col-md-6">
-        <label for="name">Name</label>
-        <InputText id="name" type="text" class="form-control" @bind-Value="Form.Name"></InputText>
+        <MudTextField id="name" @bind-Value="Form.Name" T="string" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense" />
         <ValidationMessage For="() => Form.Name"></ValidationMessage>
     </div>
     <div class="form-group">

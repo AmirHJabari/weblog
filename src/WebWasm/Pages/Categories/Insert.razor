@@ -5,24 +5,21 @@
 
 <PageTitle>Categories > Insert</PageTitle>
 
-<h1 class="mb-4 h2"><RoutsWithOrder Headers=@(new string[] {"Categories", "Insert"})></RoutsWithOrder></h1>
+<h1 class="mb-4 h2"><RoutsWithOrder Headers=@(new string[] {"Categories", "Insert"}) /></h1>
 
 <EditForm Model="Form" OnValidSubmit="OnSubmit">
     <FluentValidator></FluentValidator>
 
     <div class="form-group mb-3 col-md-6">
-        <label for="name">Name</label>
-        <InputText id="name" type="text" class="form-control" @bind-Value="Form.Name"></InputText>
+        <MudTextField id="name" @bind-Value="Form.Name" T="string" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense" />
         <ValidationMessage For="() => Form.Name"></ValidationMessage>
     </div>
     <div class="form-group mb-3 col-md-6">
-        <label for="urlName">UrlName</label>
-        <InputText id="urlName" type="text" class="form-control" @bind-Value="Form.UrlName"></InputText>
+        <MudTextField id="urlName" @bind-Value="Form.UrlName" T="string" Label="Url Name" Variant="Variant.Outlined" Margin="Margin.Dense" />
         <ValidationMessage For="() => Form.UrlName"></ValidationMessage>
     </div>
     <div class="form-group mb-3 col-md-6">
-        <label for="description">Description</label>
-        <InputTextArea rows="5" id="description" type="text" class="form-control" @bind-Value="Form.Description"></InputTextArea>
+        <MudTextField id="description" @bind-Value="Form.Description" T="string" Label="Description" Variant="Variant.Outlined" Lines="3" Margin="Margin.Dense" />
         <ValidationMessage For="() => Form.Description"></ValidationMessage>
     </div>
     
