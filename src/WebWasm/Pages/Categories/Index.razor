@@ -7,36 +7,30 @@
 
 <h1 class="mb-4 h2">Categories</h1>
 
-<div class="d-flex mb-5 p-3 rounded-1 shadow" style="background-color: #F5F5F5;">
+<MudPaper Class="d-flex mb-5 p-3" Elevation="4">
+    <MudSpacer />
     <MudButton class="ms-auto font-monospace" Href="/categories/insert" Variant="Variant.Filled" EndIcon="@(Icons.Material.Filled.Add)" Color="Color.Primary">Insert</MudButton>
-</div>
+</MudPaper>
 
 @if (Categories is null)
 {
-    <div class="mt-5 d-flex justify-content-center align-items-center flex-column" style="gap: 10px;">
-        <div class="spinner-border" role="status"></div>
-        <div>Loading...</div>
-    </div>
+    <LoadingCircular />
 }
 else if(Categories.Items.Any())
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Blogs</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Categories.Items)
-            {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.BlogsCount</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <MudTable FixedHeader="true" Dense="true" Striped="true" Hover="true" Items="Categories.Items" SortLabel="Sort By" Elevation="0">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<CategoryDto, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<CategoryDto, object>(x=>x.BlogsCount)">Blogs</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Blogs">@context.BlogsCount</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[]{10, 20, 50, 80, 100}" />
+        </PagerContent>
+    </MudTable>
 }
 else
 {

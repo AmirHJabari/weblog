@@ -9,14 +9,9 @@
 
 <EditForm Model="Form" OnValidSubmit="OnSubmit">
     <FluentValidator></FluentValidator>
-
-    <div class="form-group mb-3 col-md-6">
-        <MudTextField id="name" @bind-Value="Form.Name" T="string" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense" />
-        <ValidationMessage For="() => Form.Name"></ValidationMessage>
-    </div>
-    <div class="form-group">
-        <MudButton ButtonType="ButtonType.Submit" class="font-monospace" Variant="Variant.Filled" EndIcon="@(Icons.Material.Filled.Check)" Color="Color.Success">Insert</MudButton>
-    </div>
+    <MudTextField id="name" @bind-Value="Form.Name" T="string" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense" />
+    <ValidationMessage For="() => Form.Name"></ValidationMessage>
+    <MudButton ButtonType="ButtonType.Submit" class="font-monospace" Variant="Variant.Filled" EndIcon="@(Icons.Material.Filled.Check)" Color="Color.Success">Insert</MudButton>
 </EditForm>
 
 @code

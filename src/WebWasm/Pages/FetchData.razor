@@ -9,10 +9,7 @@
 
 @if (forecasts == null)
 {
-    <div class="mt-5 d-flex justify-content-center align-items-center flex-column" style="gap: 10px;">
-        <MudProgressCircular Style="height: 50px; width: 50px;" Class="mx-auto" Color="Color.Primary" Indeterminate="true" />
-        <MudText>Loading</MudText>
-    </div>
+    <LoadingCircular />
 }
 else
 {

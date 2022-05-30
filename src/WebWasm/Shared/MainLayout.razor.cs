@@ -95,7 +95,14 @@ public partial class MainLayout : LayoutComponentBase
     // }
 
 
-    private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
+    private ThemeManagerTheme _themeManager = new()
+    {
+        DrawerClipMode = DrawerClipMode.Docked,
+        DrawerElevation = 3,
+        AppBarElevation = 25,
+        DefaultElevation = 25,
+        DefaultBorderRadius = 5
+    };
     bool _themeManagerOpen = false;
 
     void OpenThemeManager(bool value)
@@ -115,6 +122,7 @@ public partial class MainLayout : LayoutComponentBase
             _themeIcon = Icons.Outlined.DarkMode;
             _currentTheme = _lightTheme;
         }
+        
         _themeManager = value;
         StateHasChanged();
     }
