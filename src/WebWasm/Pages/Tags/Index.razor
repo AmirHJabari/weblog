@@ -1,7 +1,5 @@
 @page "/Tags"
 @using Application.Queries.GetTagsWithPagination
-@using Application.Common.Models
-@inject ITagHttpClient _client
 
 <PageTitle>Tags</PageTitle>
 
@@ -9,7 +7,13 @@
 
 <MudPaper Class="d-flex mb-5 p-3" Elevation="4">
     <MudSpacer />
-    <MudButton class="ms-auto font-monospace" Href="/tags/insert" Variant="Variant.Filled" EndIcon="@(Icons.Material.Filled.Add)" Color="Color.Primary">Insert</MudButton>
+
+    <MudForm Class="d-flex align-items-center" Model="Form" @ref="_mudForm">
+        <MudTextField Class="rounded-r-0" @ref="_tagNameInput" @bind-Value="Form.Name" Immediate="true" Label="Tag Name" Variant="Variant.Outlined" Margin="Margin.Dense"
+         Adornment="Adornment.End"  AdornmentIcon="@Icons.Material.Filled.Add" OnAdornmentClick="x => OnSubmit()" AdornmentAriaLabel="Add Tag" AdornmentColor="Color.Success"
+         @onkeyup=@(async e =>{ if (e.Code == "Enter" || e.Code == "NumpadEnter") await OnSubmit(); }) />
+    </MudForm>
+
 </MudPaper>
 
 @if (Tags is null)
@@ -20,10 +24,12 @@ else if(Tags.Items.Any())
 {
     <MudTable FixedHeader="true" Dense="true" Striped="true" Hover="true" Items="Tags.Items" SortLabel="Sort By" Elevation="0">
         <HeaderContent>
-            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<TagDto, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<TagDto, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<TagDto, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<TagDto, object>(x=>x.BlogRelationsCount)">Blogs</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
+            <MudTd DataLabel="Id">@context.Id</MudTd>
             <MudTd DataLabel="Name">@context.Name</MudTd>
             <MudTd DataLabel="Blogs">@context.BlogRelationsCount</MudTd>
         </RowTemplate>
@@ -39,11 +45,9 @@ else
 
 @code
 {
-    private PaginatedList<TagDto> Tags { get; set; }
-
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        Tags = await _client.GetWithPaginationAsync(new() { PageNumber = 1, PageSize = 10 });
+        await UpdateListAsync();
     }
 }
