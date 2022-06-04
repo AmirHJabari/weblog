@@ -1,0 +1,57 @@
+@using Application.Commands.CreateTag
+@inject ISnackbar Snackbar
+
+<MudDialog Style="width: 450px;">
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@(Icons.Material.Filled.Tag)" Size="Size.Medium" />
+            Insert Many Tags
+        </MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudTextField Class="rounded-r-0 mb-2" @ref="_tagNameInput" @bind-Value="Form.Name" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense"
+         Adornment="Adornment.End"  AdornmentIcon="@Icons.Material.Filled.Add" OnAdornmentClick="x => AddTagAsync()" AdornmentAriaLabel="Add Tag" AdornmentColor="Color.Success"
+         @onkeyup=@(async e => { if (e.Code == "Enter" || e.Code == "NumpadEnter") await AddTagAsync(); }) />
+         <MudChipSet AllClosable="true" OnClose="ChipClosed" Style="min-height: 200px;">
+            @foreach (var value in TagNames)
+            {
+                <MudChip Text="@value" />
+            }
+        </MudChipSet>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Filled">Cancel</MudButton>
+        <MudButton Color="Color.Success" Variant="Variant.Filled" OnClick="InsertAllClicked" Disabled="@(!TagNames.Any())" >Insert All</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+    MudTextField<string> _tagNameInput;
+
+    [Inject]
+    public CreateTagCommandValidator Validator { get; set; }
+
+    [Parameter]
+    public CreateTagCommand Form { get; set; }
+    [Parameter]
+    public List<string> TagNames { get; set; }
+
+    async Task AddTagAsync()
+    {
+        var errors = await Validator.GetValidationErrorsAsync(Form);
+        if (errors is not null)
+        {
+            Snackbar.Add(string.Join("\n", errors), Severity.Error);
+
+            return;
+        }
+
+        TagNames.Add(Form.Name);
+        Form.Name = string.Empty;
+    }
+
+    public void ChipClosed(MudChip chip) => TagNames.Remove(chip.Text);
+    private void InsertAllClicked() => MudDialog.Close(DialogResult.Ok(1));
+    private void Cancel() => MudDialog.Cancel();
+}

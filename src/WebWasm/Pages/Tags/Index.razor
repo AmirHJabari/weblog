@@ -12,6 +12,7 @@
         <MudTextField Class="rounded-r-0" @ref="_tagNameInput" @bind-Value="Form.Name" Immediate="true" Label="Tag Name" Variant="Variant.Outlined" Margin="Margin.Dense"
          Adornment="Adornment.End"  AdornmentIcon="@Icons.Material.Filled.Add" OnAdornmentClick="x => OnSubmit()" AdornmentAriaLabel="Add Tag" AdornmentColor="Color.Success"
          @onkeyup=@(async e =>{ if (e.Code == "Enter" || e.Code == "NumpadEnter") await OnSubmit(); }) />
+         <MudButton Class="ml-2" Color="Color.Primary" Variant="Variant.Filled" OnClick="InsertManyClicked">Insert Many</MudButton>
     </MudForm>
 
 </MudPaper>
