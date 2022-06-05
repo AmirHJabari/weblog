@@ -49,5 +49,18 @@
             ],
             "problemMatcher": "$msCompile"
         },
+
+        {
+            "label": "buildWasm",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/WebWasm/WebWasm.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
     ]
 }

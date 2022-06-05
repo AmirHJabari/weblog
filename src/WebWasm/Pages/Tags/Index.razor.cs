@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Components.Web;
 using Weblog.Application.Commands.CreateTag;
 using Weblog.Application.Common.Models;
 using Weblog.Application.Queries.GetTagsWithPagination;
+
 namespace Weblog.WebWasm.Pages.Tags;
 
-public partial class Index
+public partial class Index : ComponentBase
 {
     DialogOptions topCenter = new() { Position = DialogPosition.TopCenter };
     MudForm _mudForm;
+    public MudTable<TagDto> tagsTable = new();
     MudTextField<string> _tagNameInput;
 
     private PaginatedList<TagDto> Tags { get; set; }
@@ -23,12 +25,25 @@ public partial class Index
     [Inject]
     public IDialogService DialogService { get; set; }
 
+    /// <summary>
+    /// Here we simulate getting the paged, filtered and ordered data from the server
+    /// </summary>
+    private async Task<TableData<TagDto>> ReloadTagsTableData(TableState state)
+    {
+        Console.WriteLine("Tag is getting filled.");
+        Tags = await ApiClient.GetWithPaginationAsync(new() { PageNumber = state.Page+1, PageSize = state.PageSize });
+
+        this.StateHasChanged();
+
+        return new TableData<TagDto>() { TotalItems = Tags.TotalCount, Items = Tags.Items };
+    }
+
     private async Task OnSubmit()
     {
         var errors = await Validator.GetValidationErrorsAsync(Form);
         if (errors is not null)
         {
-            Snackbar.Add(string.Join("\n", errors), Severity.Error);
+            Snackbar.Add(string.Join("<br/>", errors), Severity.Error);
 
             return;
         }
@@ -36,7 +51,7 @@ public partial class Index
         try
         {
             var id = await ApiClient.CreateAsync(Form);
-            var listTask = UpdateListAsync();
+            var listTask = tagsTable.ReloadServerData();
 
             Form = new();
             await _tagNameInput.FocusAsync();
@@ -47,11 +62,6 @@ public partial class Index
         {
             Console.WriteLine("This is the error: " + ex);
         }
-    }
-
-    private async Task UpdateListAsync()
-    {
-        Tags = await ApiClient.GetWithPaginationAsync(new() { PageNumber = 1, PageSize = 10 });
     }
 
     async Task InsertManyClicked()
@@ -75,8 +85,8 @@ public partial class Index
             }
 
             TagNames.Clear();
-
-            var listTask = UpdateListAsync();
+            
+            var listTask = tagsTable.ReloadServerData();
             Form = new();
             await _tagNameInput.FocusAsync();
             await listTask;

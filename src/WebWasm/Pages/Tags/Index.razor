@@ -21,34 +21,31 @@
 {
     <LoadingCircular />
 }
-else if(Tags.Items.Any())
-{
-    <MudTable FixedHeader="true" Dense="true" Striped="true" Hover="true" Items="Tags.Items" SortLabel="Sort By" Elevation="0">
-        <HeaderContent>
-            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<TagDto, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<TagDto, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<TagDto, object>(x=>x.BlogRelationsCount)">Blogs</MudTableSortLabel></MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd DataLabel="Id">@context.Id</MudTd>
-            <MudTd DataLabel="Name">@context.Name</MudTd>
-            <MudTd DataLabel="Blogs">@context.BlogRelationsCount</MudTd>
-        </RowTemplate>
-        <PagerContent>
-            <MudTablePager PageSizeOptions="new int[]{10, 20, 50, 80, 100}" />
-        </PagerContent>
-    </MudTable>
-}
-else
+else if (!Tags.Items.Any())
 {
     <NoContent Title="There is no tag to display!" />
 }
 
+<MudTable Class=@TagsTableClass RowsPerPage="20" Height="490px" HorizontalScrollbar="true"
+    ServerData="@(new Func<TableState, Task<TableData<TagDto>>>(ReloadTagsTableData))" @ref="tagsTable"
+    FixedFooter="true" FixedHeader="true" Dense="true" Striped="true" Hover="true" SortLabel="Sort By" Elevation="0">
+
+    <HeaderContent>
+        <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<TagDto, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<TagDto, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<TagDto, object>(x=>x.BlogRelationsCount)">Blogs</MudTableSortLabel></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="Blogs">@context.BlogRelationsCount</MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager HorizontalAlignment="HorizontalAlignment.Center" PageSizeOptions="new int[]{20, 50, 80, 100}" />
+    </PagerContent>
+</MudTable>
+
 @code
 {
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-        await UpdateListAsync();
-    }
+    string TagsTableClass => (Tags is not null && Tags.Items.Any()) ? "" : "d-none" ;
 }
